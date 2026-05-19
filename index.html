@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fate AI — ИИ-гадалка на картах Таро</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap');
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: #08080f;
+      color: #c8d8f0;
+      line-height: 1.65;
+      font-size: 16px;
+    }
+
+    a { color: #9b7fe8; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .wrap {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* ── Hero ── */
+    .hero {
+      text-align: center;
+      padding: 60px 20px 40px;
+      background: radial-gradient(ellipse at 50% 0%, #1a0a30 0%, #08080f 70%);
+    }
+    .hero .emoji { font-size: 52px; display: block; margin-bottom: 12px; }
+    .hero h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #dce8ff;
+      margin-bottom: 10px;
+    }
+    .hero p {
+      font-size: 1.05rem;
+      color: #8899bb;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    /* ── Sections ── */
+    .section {
+      border-top: 1px solid #1e1e38;
+      padding: 32px 0;
+    }
+    .section:first-of-type { border-top: none; }
+
+    h2 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #b0a0e0;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    ul li {
+      padding: 5px 0 5px 22px;
+      position: relative;
+      color: #b0bdd8;
+    }
+    ul li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: #5a4888;
+    }
+
+    /* ── Cards: free / premium ── */
+    .plans {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-top: 4px;
+    }
+    @media (max-width: 480px) { .plans { grid-template-columns: 1fr; } }
+
+    .plan {
+      border: 1px solid #2a2048;
+      border-radius: 14px;
+      padding: 18px 16px;
+      background: #0d0d1e;
+    }
+    .plan.premium {
+      border-color: #5a3d99;
+      background: linear-gradient(135deg, #110e25, #0d0d1e);
+    }
+    .plan h3 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: #c0b8e8;
+    }
+    .plan.premium h3 { color: #c8a8ff; }
+    .plan ul li { font-size: 0.9rem; }
+
+    /* ── Price block ── */
+    .price-block {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 4px;
+    }
+    .price-card {
+      flex: 1;
+      min-width: 200px;
+      border: 1px solid #2a2048;
+      border-radius: 14px;
+      padding: 20px;
+      background: #0d0d1e;
+      text-align: center;
+    }
+    .price-card .amount {
+      font-size: 1.9rem;
+      font-weight: 800;
+      color: #d0c0ff;
+    }
+    .price-card .period {
+      font-size: 0.85rem;
+      color: #6870a0;
+      margin-top: 2px;
+    }
+    .price-card .note {
+      margin-top: 8px;
+      font-size: 0.8rem;
+      color: #5a6080;
+    }
+
+    /* ── Text blocks ── */
+    p { color: #8899bb; margin-bottom: 8px; }
+    p:last-child { margin-bottom: 0; }
+
+    .contacts a { color: #9b7fe8; }
+
+    footer {
+      text-align: center;
+      padding: 32px 20px;
+      border-top: 1px solid #1e1e38;
+      font-size: 0.8rem;
+      color: #404060;
+    }
+  </style>
+</head>
+<body>
+
+<div class="hero">
+  <span class="emoji">🔮</span>
+  <h1>Fate AI — ИИ-гадалка</h1>
+  <p>Гадание на картах Таро с искусственным интеллектом. Анонимно, без регистрации.</p>
+</div>
+
+<div class="wrap">
+
+  <!-- Тарифы -->
+  <div class="section">
+    <h2>🃏 Что входит</h2>
+    <div class="plans">
+      <div class="plan">
+        <h3>Бесплатно</h3>
+        <ul>
+          <li>1 гадание каждые 24 часа</li>
+          <li>Карта дня (1 карта)</li>
+          <li>Расклад «Прошлое, Настоящее, Будущее» (3 карты)</li>
+          <li>Уточняющие вопросы по картам</li>
+        </ul>
+      </div>
+      <div class="plan premium">
+        <h3>✨ Премиум</h3>
+        <ul>
+          <li>Без ограничений на гадания</li>
+          <li>Расклад на 5 карт</li>
+          <li>Расклад на 7 карт</li>
+          <li>Все гадалки разблокированы</li>
+          <li>Сохранение сессий</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Цены -->
+  <div class="section">
+    <h2>💳 Стоимость</h2>
+    <div class="price-block">
+      <div class="price-card">
+        <div class="amount">299 ₽</div>
+        <div class="period">в месяц</div>
+        <div class="note">Оплата через Robokassa</div>
+      </div>
+      <div class="price-card">
+        <div class="amount">1 990 ₽</div>
+        <div class="period">в год</div>
+        <div class="note">Экономия ~43%</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Конфиденциальность -->
+  <div class="section">
+    <h2>🛡 Конфиденциальность</h2>
+    <p>Мы не собираем и не храним личные данные. Диалоги с гадалкой остаются только на вашем устройстве. Приложение работает анонимно — регистрация не требуется.</p>
+    <p><a href="privacy.html">Политика конфиденциальности</a> &nbsp;·&nbsp; <a href="user-agreement.html">Пользовательское соглашение</a></p>
+  </div>
+
+  <!-- Контакты -->
+  <div class="section contacts">
+    <h2>📬 Контакты</h2>
+    <p>Email: <a href="mailto:aitherapisthelp@gmail.com">aitherapisthelp@gmail.com</a></p>
+    <p>Telegram: <a href="https://t.me/AI_Therapist_APP" target="_blank">@AI_Therapist_APP</a></p>
+  </div>
+
+  <!-- Реквизиты -->
+  <div class="section">
+    <h2>🛒 Реквизиты продавца</h2>
+    <p>Орлов Виктор Геннадьевич<br>
+    ИНН: 583515875490<br>
+    Самозанятый. Оплата через сервис Robokassa.</p>
+  </div>
+
+  <!-- Условия предоставления -->
+  <div class="section">
+    <h2>📦 Условия предоставления услуги</h2>
+    <p>Подписка предоставляет доступ к расширенным функциям приложения Fate AI. После успешной оплаты доступ открывается немедленно в течение нескольких минут.</p>
+    <p>Срок действия подписки — 30 дней (месячная) или 365 дней (годовая) с момента активации. По истечении срока функции бесплатного тарифа сохраняются.</p>
+  </div>
+
+  <!-- Возврат -->
+  <div class="section">
+    <h2>💸 Политика возврата</h2>
+    <p>В соответствии со ст. 26.1 Закона РФ «О защите прав потребителей» возврат оплаты за цифровые услуги надлежащего качества, предоставленные в полном объёме, не производится.</p>
+    <p>При технических проблемах обращайтесь на <a href="mailto:aitherapisthelp@gmail.com">aitherapisthelp@gmail.com</a> — решим индивидуально.</p>
+  </div>
+
+  <!-- Описание услуги -->
+  <div class="section">
+    <h2>📝 Описание услуги</h2>
+    <p>Fate AI — мобильное приложение для гадания на картах Таро с использованием технологий искусственного интеллекта. Приложение предоставляет персонализированные интерпретации карт, расклады и ответы на вопросы в форме диалога.</p>
+    <p>Подписка «Премиум»: безлимитные гадания + расклады на 5 и 7 карт. Стоимость: 299 руб/месяц или 1 990 руб/год.</p>
+  </div>
+
+</div><!-- /wrap -->
+
+<footer>
+  © 2025 Fate AI &nbsp;·&nbsp; Орлов В.Г., самозанятый
+</footer>
+
+</body>
+</html>
