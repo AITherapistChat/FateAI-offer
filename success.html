@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Оплата прошла успешно — Fate AI</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Nunito:wght@400;700;800&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      min-height: 100vh;
+      background: radial-gradient(ellipse at top, #1a0a3a 0%, #0c0425 50%, #06021a 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Nunito', sans-serif;
+      color: #e8daff;
+      padding: 24px;
+    }
+
+    .stars {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+    .star {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background: #fff;
+      border-radius: 50%;
+      animation: twinkle var(--d, 3s) infinite alternate;
+      opacity: var(--o, 0.5);
+    }
+    @keyframes twinkle { from { opacity: 0.1; } to { opacity: var(--o, 0.8); } }
+
+    .card {
+      position: relative;
+      background: linear-gradient(160deg, #120630 0%, #1a0a40 50%, #0c0425 100%);
+      border: 1px solid transparent;
+      border-radius: 24px;
+      padding: 48px 36px;
+      max-width: 480px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 0 60px rgba(90, 40, 180, 0.3), 0 0 120px rgba(218, 168, 56, 0.08);
+      background-clip: padding-box;
+    }
+    .card::before {
+      content: '';
+      position: absolute;
+      inset: -1px;
+      border-radius: 25px;
+      background: linear-gradient(135deg, #5040a0, #daa838, #5040a0, #daa838);
+      z-index: -1;
+    }
+
+    .icon {
+      font-size: 64px;
+      margin-bottom: 8px;
+      display: block;
+      filter: drop-shadow(0 0 16px rgba(218, 168, 56, 0.6));
+      animation: pulse 2.5s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); filter: drop-shadow(0 0 12px rgba(218, 168, 56, 0.5)); }
+      50% { transform: scale(1.06); filter: drop-shadow(0 0 24px rgba(218, 168, 56, 0.9)); }
+    }
+
+    .divider {
+      color: #daa838;
+      font-size: 18px;
+      letter-spacing: 8px;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 34px;
+      font-weight: 700;
+      color: #daa838;
+      margin-bottom: 12px;
+      text-shadow: 0 0 20px rgba(218, 168, 56, 0.4);
+    }
+
+    .subtitle {
+      font-size: 15px;
+      color: #b8a8d8;
+      line-height: 1.6;
+      margin-bottom: 32px;
+    }
+
+    .info-box {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(218, 168, 56, 0.2);
+      border-radius: 14px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      font-size: 14px;
+      color: #c8b8e8;
+      line-height: 1.6;
+    }
+
+    .contacts-label {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 18px;
+      color: #daa838;
+      margin-bottom: 16px;
+      font-weight: 600;
+    }
+
+    .contacts {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .contact-btn {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 20px;
+      border-radius: 14px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 14px;
+      transition: transform 0.15s, box-shadow 0.15s;
+      border: 1px solid transparent;
+    }
+    .contact-btn:hover { transform: translateY(-2px); }
+
+    .contact-btn.telegram {
+      background: linear-gradient(135deg, #1a1040, #2a1560);
+      border-color: rgba(80, 64, 160, 0.6);
+      color: #c8b8e8;
+    }
+    .contact-btn.telegram:hover { box-shadow: 0 4px 20px rgba(80, 64, 160, 0.4); }
+
+    .contact-btn.max {
+      background: linear-gradient(135deg, #1a1040, #2a1060);
+      border-color: rgba(218, 168, 56, 0.4);
+      color: #daa838;
+    }
+    .contact-btn.max:hover { box-shadow: 0 4px 20px rgba(218, 168, 56, 0.3); }
+
+    .contact-icon { font-size: 22px; flex-shrink: 0; }
+
+    .contact-info { text-align: left; }
+    .contact-title { font-weight: 800; display: block; }
+    .contact-desc { font-weight: 400; font-size: 12px; opacity: 0.7; }
+
+    .footer {
+      margin-top: 32px;
+      font-size: 12px;
+      color: #5040a0;
+    }
+  </style>
+</head>
+<body>
+
+<div class="stars" id="stars"></div>
+
+<div class="card">
+  <span class="icon">✨</span>
+  <div class="divider">✦ ✦ ✦</div>
+  <h1>Оплата прошла!</h1>
+  <p class="subtitle">
+    Премиум-доступ к Fate AI активирован.<br>
+    Вернитесь в приложение — звёзды уже ждут вас.
+  </p>
+
+  <div class="info-box">
+    🔮 Откройте приложение Fate AI — статус обновится автоматически.<br>
+    Если статус не изменился, перезапустите приложение.
+  </div>
+
+  <div class="contacts-label">Связь с разработчиком</div>
+  <div class="contacts">
+    <a href="https://t.me/Game_Patrol" class="contact-btn telegram" target="_blank">
+      <span class="contact-icon">✈️</span>
+      <div class="contact-info">
+        <span class="contact-title">Telegram — поддержка</span>
+        <span class="contact-desc">@Game_Patrol · написать разработчику</span>
+      </div>
+    </a>
+    <a href="https://t.me/AI_Therapist_APP" class="contact-btn telegram" target="_blank">
+      <span class="contact-icon">📣</span>
+      <div class="contact-info">
+        <span class="contact-title">Telegram — канал</span>
+        <span class="contact-desc">Новости и обновления</span>
+      </div>
+    </a>
+    <a href="https://max.ru/u/f9LHodD0cOLipAu8wObtKCFFNq0tcwTb1FXJH4-p1ZsA73YJgBBY1-SNVxM" class="contact-btn max" target="_blank">
+      <span class="contact-icon">⭐</span>
+      <div class="contact-info">
+        <span class="contact-title">MAX</span>
+        <span class="contact-desc">Страница разработчика</span>
+      </div>
+    </a>
+  </div>
+
+  <div class="footer">© Fate AI · Мистика в каждой карте</div>
+</div>
+
+<script>
+  const s = document.getElementById('stars');
+  for (let i = 0; i < 80; i++) {
+    const d = document.createElement('div');
+    d.className = 'star';
+    d.style.cssText = `left:${Math.random()*100}%;top:${Math.random()*100}%;--d:${2+Math.random()*4}s;--o:${0.3+Math.random()*0.7};animation-delay:${Math.random()*4}s`;
+    s.appendChild(d);
+  }
+</script>
+</body>
+</html>
