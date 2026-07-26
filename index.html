@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Fate AI — ИИ-гадалки: Таро, астрология, сны</title>
+  <title>Fate AI — ИИ-гадалка на картах Таро</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap');
 
@@ -29,10 +29,10 @@
     /* ── Hero ── */
     .hero {
       text-align: center;
-      padding: 60px 20px 44px;
+      padding: 60px 20px 40px;
       background: radial-gradient(ellipse at 50% 0%, #1a0a30 0%, #08080f 70%);
     }
-    .hero .emoji { font-size: 52px; display: block; margin-bottom: 14px; }
+    .hero .emoji { font-size: 52px; display: block; margin-bottom: 12px; }
     .hero h1 {
       font-size: 2rem;
       font-weight: 800;
@@ -51,58 +51,40 @@
       border-top: 1px solid #1e1e38;
       padding: 32px 0;
     }
+    .section:first-of-type { border-top: none; }
 
     h2 {
       font-size: 1.1rem;
       font-weight: 700;
       color: #b0a0e0;
-      margin-bottom: 16px;
+      margin-bottom: 14px;
       display: flex;
       align-items: center;
       gap: 8px;
     }
 
-    /* ── Personas grid ── */
-    .personas {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
+    ul {
+      list-style: none;
+      padding: 0;
     }
-    @media (max-width: 480px) { .personas { grid-template-columns: 1fr; } }
-
-    .persona {
-      border: 1px solid #2a2048;
-      border-radius: 14px;
-      padding: 16px;
-      background: #0d0d1e;
-    }
-    .persona-name {
-      font-weight: 700;
-      font-size: 0.95rem;
-      color: #c0b8e8;
-      margin-bottom: 4px;
-    }
-    .persona-role {
-      font-size: 0.78rem;
-      color: #5a5080;
-      margin-bottom: 10px;
-    }
-    .persona ul { list-style: none; padding: 0; }
-    .persona ul li {
-      font-size: 0.85rem;
-      color: #8899bb;
-      padding: 3px 0 3px 16px;
+    ul li {
+      padding: 5px 0 5px 22px;
       position: relative;
+      color: #b0bdd8;
     }
-    .persona ul li::before { content: '—'; position: absolute; left: 0; color: #4a3870; }
-    .persona ul li.premium { color: #c8a8ff; }
-    .persona ul li.premium::before { color: #7a5aaa; }
+    ul li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: #5a4888;
+    }
 
-    /* ── Plans ── */
+    /* ── Cards: free / premium ── */
     .plans {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 14px;
+      margin-top: 4px;
     }
     @media (max-width: 480px) { .plans { grid-template-columns: 1fr; } }
 
@@ -123,53 +105,28 @@
       color: #c0b8e8;
     }
     .plan.premium h3 { color: #c8a8ff; }
-    .plan ul { list-style: none; padding: 0; }
-    .plan ul li {
-      font-size: 0.88rem;
-      color: #8899bb;
-      padding: 4px 0 4px 18px;
-      position: relative;
-    }
-    .plan ul li::before { content: '—'; position: absolute; left: 0; color: #4a3870; }
-    .plan.premium ul li { color: #b0a0d8; }
-    .plan.premium ul li::before { color: #7a5aaa; }
+    .plan ul li { font-size: 0.9rem; }
 
     /* ── Price block ── */
     .price-block {
       display: flex;
       flex-wrap: wrap;
       gap: 14px;
+      margin-top: 4px;
     }
     .price-card {
       flex: 1;
       min-width: 200px;
-      border: 1px solid #3a2860;
+      border: 1px solid #2a2048;
       border-radius: 14px;
       padding: 20px;
-      background: linear-gradient(135deg, #110e25, #0d0d1e);
+      background: #0d0d1e;
       text-align: center;
     }
-    .price-card .badge {
-      display: inline-block;
-      font-size: 0.7rem;
-      font-weight: 700;
-      color: #daa838;
-      border: 1px solid #daa838;
-      border-radius: 20px;
-      padding: 2px 10px;
-      margin-bottom: 10px;
-      letter-spacing: 0.5px;
-    }
     .price-card .amount {
-      font-size: 2rem;
+      font-size: 1.9rem;
       font-weight: 800;
       color: #d0c0ff;
-    }
-    .price-card .old-price {
-      font-size: 0.9rem;
-      color: #404060;
-      text-decoration: line-through;
-      margin-top: 2px;
     }
     .price-card .period {
       font-size: 0.85rem;
@@ -177,22 +134,16 @@
       margin-top: 2px;
     }
     .price-card .note {
-      margin-top: 10px;
-      font-size: 0.78rem;
+      margin-top: 8px;
+      font-size: 0.8rem;
       color: #5a6080;
     }
 
-    /* ── Text ── */
+    /* ── Text blocks ── */
     p { color: #8899bb; margin-bottom: 8px; }
     p:last-child { margin-bottom: 0; }
-    .contacts a { color: #9b7fe8; }
 
-    .legend {
-      font-size: 0.8rem;
-      color: #5a5080;
-      margin-top: 10px;
-    }
-    .legend span { color: #c8a8ff; }
+    .contacts a { color: #9b7fe8; }
 
     footer {
       text-align: center;
@@ -207,80 +158,45 @@
 
 <div class="hero">
   <span class="emoji">🔮</span>
-  <h1>Fate AI — ИИ-гадалки</h1>
-  <p>Таро, астрология, цыганские карты и толкование снов — с искусственным интеллектом. Анонимно, без регистрации.</p>
+  <h1>Fate AI — ИИ-гадалка</h1>
+  <p>Таро, гадание на 36 картах, астрология и толкование снов. Анонимно, без регистрации.</p>
 </div>
 
 <div class="wrap">
 
-  <!-- Персонажи -->
+  <!-- Гадалки -->
   <div class="section">
-    <h2>✨ Четыре гадалки</h2>
-    <div class="personas">
-      <div class="persona">
-        <div class="persona-name">🌙 Луна</div>
-        <div class="persona-role">ИИ-таролог · 78 карт</div>
-        <ul>
-          <li>Карта дня (1 карта)</li>
-          <li class="premium">Прошлое — Настоящее — Будущее (3 карты)</li>
-          <li class="premium">Звезда (5 карт)</li>
-          <li class="premium">Подкова (7 карт)</li>
-        </ul>
-      </div>
-      <div class="persona">
-        <div class="persona-name">💫 Венера</div>
-        <div class="persona-role">Гадалка · карты судьбы</div>
-        <ul>
-          <li>Веер судьбы</li>
-          <li class="premium">Любовный союз (36 карт)</li>
-          <li class="premium">Цыганский расклад (36 карт)</li>
-        </ul>
-      </div>
-      <div class="persona">
-        <div class="persona-name">⭐ Сириус</div>
-        <div class="persona-role">ИИ-астролог · эфемериды</div>
-        <ul>
-          <li>Гороскоп + вопросы</li>
-          <li class="premium">Натальная карта</li>
-          <li class="premium">Синастрия двух людей</li>
-        </ul>
-      </div>
-      <div class="persona">
-        <div class="persona-name">🌙 Морфей</div>
-        <div class="persona-role">Толкователь снов</div>
-        <ul>
-          <li>1 толкование в день</li>
-          <li>До 5 уточняющих вопросов</li>
-          <li class="premium">Безлимитные толкования</li>
-          <li class="premium">Дневник снов</li>
-        </ul>
-      </div>
-    </div>
-    <p class="legend"><span>Фиолетовым</span> — функции премиум-доступа.</p>
+    <h2>🔮 Четыре гадалки</h2>
+    <p><strong>Луна</strong> — расклады на картах Таро: Карта дня, «Прошлое, Настоящее, Будущее», «Звезда», «Подкова».</p>
+    <p><strong>Венера</strong> — гадания на 36 картах: Веер Судьбы, Любовный союз, Цыганский расклад.</p>
+    <p><strong>Сириус</strong> — астрология: гороскоп, натальная карта, синастрия, ответы на вопросы по астрологии.</p>
+    <p><strong>Морфей</strong> — толкование снов.</p>
   </div>
 
   <!-- Тарифы -->
   <div class="section">
-    <h2>🃏 Бесплатно и Премиум</h2>
+    <h2>🃏 Что входит</h2>
     <div class="plans">
       <div class="plan">
         <h3>Бесплатно</h3>
         <ul>
-          <li>Карта дня у Луны — бесплатно каждый день</li>
-          <li>По одному бесплатному гаданию у каждой гадалки</li>
-          <li>Веер судьбы у Венеры, гороскоп у Сириуса</li>
-          <li>5 бесплатных толкований снов у Морфея</li>
+          <li>Один заход в сутки к каждой гадалке</li>
+          <li>Луна — «Карта дня»</li>
+          <li>Венера — «Веер Судьбы»</li>
+          <li>Сириус — один режим на выбор: гороскоп, краткая натальная карта или вопрос астрологу</li>
+          <li>Морфей — одно толкование сна</li>
+          <li>Обновление в 00:00 по Москве</li>
         </ul>
       </div>
       <div class="plan premium">
         <h3>✨ Премиум</h3>
         <ul>
-          <li>Безлимитные сессии</li>
-          <li>Все расклады Луны (3, 5, 7 карт)</li>
+          <li>Суточные лимиты сняты</li>
+          <li>Расклады Таро на 3, 5 и 7 карт</li>
           <li>Любовный союз и Цыганский расклад</li>
-          <li>Натальная карта и Синастрия</li>
-          <li>Безлимитный Морфей + дневник</li>
-          <li>Сохранение сессий</li>
+          <li>Полная натальная карта и транзиты</li>
+          <li>Синастрия — совместимость двух карт</li>
+          <li>Дневник предсказаний</li>
         </ul>
       </div>
     </div>
@@ -291,56 +207,32 @@
     <h2>💳 Стоимость</h2>
     <div class="price-block">
       <div class="price-card">
-        <div class="badge">АКЦИЯ</div>
         <div class="amount">199 ₽</div>
-        <div class="old-price">было 599 ₽</div>
         <div class="period">30 дней</div>
-        <div class="note">Оплата через Robokassa.<br>Без автопродления.</div>
+        <div class="note">Оплата через Robokassa</div>
       </div>
       <div class="price-card">
-        <div class="badge">ВЫГОДНЕЕ</div>
         <div class="amount">1 299 ₽</div>
-        <div class="old-price">было 2 999 ₽</div>
         <div class="period">365 дней</div>
-        <div class="note">Экономия ~57%.<br>Без автопродления.</div>
-      </div>
-      <div class="price-card">
-        <div class="badge">ПАКЕТ</div>
-        <div class="amount">99 ₽</div>
-        <div class="period">3 гадания</div>
-        <div class="note">Разовая покупка.<br>Без подписки и срока.</div>
+        <div class="note">Выгоднее месячного</div>
       </div>
     </div>
-    <p style="margin-top:12px; font-size:0.82rem;">Акционные цены действуют ограниченное время. Актуальная стоимость всегда отображается в приложении перед оплатой.</p>
-  </div>
-
-  <!-- Условия -->
-  <div class="section">
-    <h2>📦 Условия предоставления услуги</h2>
-    <p>Подписка открывает доступ к расширенным функциям приложения Fate AI. После успешной оплаты доступ активируется автоматически при возврате в приложение.</p>
-    <p>Срок действия: 30 или 365 дней с момента активации. По истечении срока бесплатные функции сохраняются в полном объёме.</p>
-  </div>
-
-  <!-- Возврат -->
-  <div class="section">
-    <h2>💸 Политика возврата</h2>
-    <p>В соответствии со ст. 26.1 Закона РФ «О защите прав потребителей» возврат оплаты за цифровые услуги надлежащего качества не производится.</p>
-    <p>При технических проблемах пишите на <a href="mailto:aitherapisthelp@gmail.com">aitherapisthelp@gmail.com</a> — каждый случай рассматривается индивидуально.</p>
+    <p>Платёж разовый, автопродления нет — деньги без вашего действия повторно не списываются. Пробного периода нет.</p>
   </div>
 
   <!-- Конфиденциальность -->
   <div class="section">
     <h2>🛡 Конфиденциальность</h2>
-    <p>Мы не собираем личные данные: имя, телефон, email, геолокация не запрашиваются. Диалоги с гадалками хранятся только на вашем устройстве. Приложение работает анонимно — регистрация не требуется.</p>
-    <p><a href="privacy.html">Политика конфиденциальности</a> &nbsp;·&nbsp; <a href="user-agreement.html">Пользовательское соглашение</a></p>
+    <p>Регистрация не нужна: пользователь опознаётся по анонимному идентификатору устройства. Переписка с гадалками и сохранённые разборы хранятся на вашем устройстве и на серверы не выгружаются.</p>
+    <p>Тексты вопросов и введённые данные рождения передаются внешней языковой модели DeepSeek — она и генерирует ответы. Подробный перечень данных и сервисов — в Политике.</p>
+    <p><a href="privacy.html">Политика конфиденциальности</a> &nbsp;·&nbsp; <a href="user-agreement.html">Пользовательское соглашение и оферта</a></p>
   </div>
 
   <!-- Контакты -->
   <div class="section contacts">
-    <h2>📬 Поддержка</h2>
+    <h2>📬 Контакты</h2>
     <p>Email: <a href="mailto:aitherapisthelp@gmail.com">aitherapisthelp@gmail.com</a></p>
     <p>Telegram: <a href="https://t.me/AI_Therapist_APP" target="_blank">@AI_Therapist_APP</a></p>
-    <p style="font-size:0.82rem; margin-top:6px;">Срок ответа: до 10 рабочих дней.</p>
   </div>
 
   <!-- Реквизиты -->
@@ -348,11 +240,33 @@
     <h2>🛒 Реквизиты продавца</h2>
     <p>Орлов Виктор Геннадьевич<br>
     ИНН: 583515875490<br>
-    Статус: самозанятый<br>
-    Приём платежей: Robokassa (ООО «Пэйлэнд»)</p>
+    Самозанятый. Оплата через сервис Robokassa.</p>
   </div>
 
-</div>
+  <!-- Условия предоставления -->
+  <div class="section">
+    <h2>📦 Условия предоставления услуги</h2>
+    <p>Премиум открывает расширенные функции приложения Fate AI. После успешной оплаты доступ активируется автоматически, обычно в течение нескольких минут.</p>
+    <p>Срок действия — 30 или 365 дней с момента активации. Оплата разовая: автоматических списаний нет, отменять ничего не требуется. По истечении срока приложение возвращается к бесплатному режиму, данные и история сохраняются.</p>
+    <p>Полные условия — в <a href="user-agreement.html">публичной оферте</a>.</p>
+  </div>
+
+  <!-- Возврат -->
+  <div class="section">
+    <h2>💸 Политика возврата</h2>
+    <p>В соответствии со ст. 26.1 Закона РФ «О защите прав потребителей» возврат оплаты за цифровые услуги надлежащего качества, предоставленные в полном объёме, не производится.</p>
+    <p>При технических проблемах обращайтесь на <a href="mailto:aitherapisthelp@gmail.com">aitherapisthelp@gmail.com</a> — решим индивидуально.</p>
+  </div>
+
+  <!-- Описание услуги -->
+  <div class="section">
+    <h2>📝 Описание услуги</h2>
+    <p>Fate AI — мобильное приложение с ИИ-персонажами в жанре гадания: расклады Таро и на 36 картах, астрологические разборы и толкование снов. Ответы генерирует языковая модель в форме диалога.</p>
+    <p>Приложение носит развлекательный характер. Результаты не являются предсказанием будущего и не заменяют консультацию специалиста.</p>
+    <p>Премиум: суточные лимиты сняты, открыты полные расклады, натальная карта, синастрия и дневник предсказаний. Стоимость: 199 ₽ за 30 дней или 1 299 ₽ за 365 дней.</p>
+  </div>
+
+</div><!-- /wrap -->
 
 <footer>
   © 2026 Fate AI &nbsp;·&nbsp; Орлов В.Г., самозанятый
